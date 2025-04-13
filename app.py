@@ -290,8 +290,6 @@ driver_display_list = ['Max Verstappen', 'Logan Sargeant','Lando Norris', 'Pierr
 'Sergio Perez', 'Fernando Alonso', 'Charles Leclerc', 'Lance Stroll', 'Kevin Magnussen', 'Yuki Tsunoda', 
 'Alexander Albon','Zhou Guanyu', 'Nico Hulkenberg', 'Esteban Ocon','Lewis Hamilton','Carlos Sainz', 'George Russell', 
 'Valtteri Bottas','Oscar Piastri']
-selected_driver_display = st.selectbox("Select Driver", driver_display_list)
-
 
 driver_images = {
     'Max Verstappen': "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/2024-08-25_Motorsport%2C_Formel_1%2C_Gro%C3%9Fer_Preis_der_Niederlande_2024_STP_3973_by_Stepro_%28medium_crop%29.jpg/500px-2024-08-25_Motorsport%2C_Formel_1%2C_Gro%C3%9Fer_Preis_der_Niederlande_2024_STP_3973_by_Stepro_%28medium_crop%29.jpg",
@@ -326,6 +324,7 @@ col1, col2, col3 = st.columns([1, 3, 2], gap="small")
 
 # Display the image in the left column
 with col1:
+    selected_driver_display = st.selectbox("Select Driver", driver_display_list)
     if selected_driver_display in driver_images:
         img_url = driver_images[selected_driver_display]
         try:
