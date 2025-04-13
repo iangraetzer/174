@@ -281,8 +281,8 @@ f_df = f_df.loc[f_df['session_type']=='Race',:].copy() # only races have the nec
 f_df.reset_index(drop=True, inplace=True)
 
 
-st.title("Team 174:")
-st.header("A Deeper Look into the 2024 F1 Season")
+st.markdown("# Team 174:<br>A Deeper Look into the 2024 F1 Season", unsafe_allow_html=True)
+
 
 
 # with dropdown_col:
