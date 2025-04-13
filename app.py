@@ -347,7 +347,7 @@ with col1:
 
 
 with col2:
-    st.subheader(f"{selected_driver_display}'s Tire Compound and Lap Speed")
+    st.subheader("How Tire Compounds Affect Lap Speed")
 
     meeting_names = sorted(df_tire["meeting_name"].unique())
     selected_meeting = st.selectbox("Select Race", meeting_names, key="tab_tire")
