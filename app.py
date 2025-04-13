@@ -282,7 +282,7 @@ f_df.reset_index(drop=True, inplace=True)
 
 
 st.markdown("# Team 174:<br>A Deeper Look into the 2024 F1 Season", unsafe_allow_html=True)
-
+st.divider()
 
 
 # with dropdown_col:
