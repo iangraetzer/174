@@ -685,8 +685,9 @@ if on:
     with col2:
         show_cols = ['date','x','y','rpm','speed','n_gear','throttle','brake','lap_number','position','curve']
         st.dataframe(anim_df[show_cols], use_container_width=True, hide_index=True, height=800)
-
-
+###
+#Driving Style section 
+###
+st.divider()
 st.header("What Defines a Driver")
 
-st.header("Test test")
