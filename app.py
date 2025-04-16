@@ -726,7 +726,7 @@ grand_prix_data = {
     }
 }
 
-default_image = os.path.join(current_dir, 'images/4143644-200.png')
+default_image = os.path.join(current_dir, 'images/7466140.png')
 
 
 
