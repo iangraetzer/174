@@ -654,8 +654,8 @@ st.header("What Defines a Driver")
 col1, col2 = st.columns(2)
 
 with col1:
-    st.header(selected_meeting)
-    st.text("This chart shows the correlation between different driving factors that define a driver's unique style on track. The visualization demonstrates how braking patterns, throttle application, and cornering technique combine to create distinctive racing signatures.")
+    st.header(f" {selected_meeting}?")
+    st.text(f"This chart shows the  {selected_meeting} race correlation  between different driving factors that define a driver's unique style on track. The visualization demonstrates how braking patterns, throttle application, and cornering technique combine to create distinctive racing signatures.")
 
 with col2:
     st.header("chart")
