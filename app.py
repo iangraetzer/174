@@ -765,5 +765,5 @@ with col2:
         # Use default image if the selected meeting is not in the dictionary
         st.image(default_image)
 
-st.header("What Defines a Driver")
+
 
