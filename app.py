@@ -662,67 +662,67 @@ grand_prix_data = {
         "image_path": os.path.join(current_dir, 'images/austrian_gp.png'),
     },
     "Azerbaijan Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/azerbaijan_gp.png'),
+        "image_path": os.path.join(current_dir, 'images/7466140.png'),
     },
     "Bahrain Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/bahrain_gp.png'),
+        "image_path": os.path.join(current_dir, 'images/7466140.png'),
     },
     "Belgian Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/belgian_gp.png'),
+        "image_path": os.path.join(current_dir, 'images/7466140.png'),
     },
     "British Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/british_gp.png'),
+        "image_path": os.path.join(current_dir, 'images/7466140.png'),
     },
     "Canadian Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/canadian_gp.png'),
+        "image_path": os.path.join(current_dir, 'images/7466140.png'),
     },
     "Chinese Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/chinese_gp.png'),
+        "image_path": os.path.join(current_dir, 'images/7466140.png'),
     },
     "Dutch Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/dutch_gp.png'),
+        "image_path": os.path.join(current_dir, 'images/7466140.png'),
     },
     "Emilia Romagna Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/emilia_romagna_gp.png'),
+        "image_path": os.path.join(current_dir, 'images/7466140.png'),
     },
     "Hungarian Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/hungarian_gp.png'),
+        "image_path": os.path.join(current_dir, 'images/7466140.png'),
     },
     "Italian Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/italian_gp.png'),
+        "image_path": os.path.join(current_dir, 'images/7466140.png'),
     },
     "Japanese Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/japanese_gp.png'),
+        "image_path": os.path.join(current_dir, 'images/7466140.png'),
     },
     "Las Vegas Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/las_vegas_gp.png'),
+        "image_path": os.path.join(current_dir, 'images/7466140.png'),
     },
     "Mexican Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/mexico_city_gp.png'),
+        "image_path": os.path.join(current_dir, 'images/7466140.png'),
     },
     "Miami Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/miami_gp.png'),
+        "image_path": os.path.join(current_dir, 'images/7466140.png'),
     },
     "Monaco Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/monaco_gp.png'),
+        "image_path": os.path.join(current_dir, 'images/7466140.png'),
     },
     "Qatar Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/qatar_gp.png'),
+        "image_path": os.path.join(current_dir, 'images/7466140.png'),
     },
     "São Paulo Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/sao_paulo_gp.png'),
+        "image_path": os.path.join(current_dir, 'images/7466140.png'),
     },
     "Saudi Arabian Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/saudi_arabian_gp.png'),
+        "image_path": os.path.join(current_dir, 'images/7466140.png'),
     },
     "Singapore Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/singapore_gp.png'),
+        "image_path": os.path.join(current_dir, 'images/7466140.png'),
     },
     "Spanish Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/spanish_gp.png'),
+        "image_path": os.path.join(current_dir, 'images/7466140.png'),
     },
     "United States Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/united_states_gp.png'),
+        "image_path": os.path.join(current_dir, 'images/7466140.png'),
     }
 }
 
