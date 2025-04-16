@@ -1,41 +1,38 @@
 import streamlit as st
-
-# st.cache_data.clear() # debug
 import time
-import pandas as pd
-import numpy as np
 import datetime as dt
-import matplotlib.pyplot as plt
-from matplotlib.dates import DateFormatter
+import os
+import pathlib
 from urllib.request import urlopen
 from urllib.error import HTTPError
-import json
-import seaborn as sns
+from io import BytesIO
 
+# Data handling
+import pandas as pd
+import numpy as np
+import json
+
+# Visualization
+import matplotlib.pyplot as plt
+from matplotlib.dates import DateFormatter
+import seaborn as sns
 import plotly.express as px
 import plotly.graph_objects as go
 
+# Streamlit extensions
 from streamlit_dynamic_filters import DynamicFilters
-
-# ian's image packages
-from PIL import Image
-from io import BytesIO
 from streamlit.components.v1 import html
+
+# Image processing
+from PIL import Image
 import requests
 
-import os
-import pathlib
-
-# will need `pyarrow`if using parquet files (recommended)
 
 
 
-
-#from ipyvizzu import Chart, Data, Config, Style, DisplayTarget
 
 st.set_page_config(page_title="CSE 6242 App", layout="wide")
 
-# os.chdir('/Users/oscar.martinez/Library/CloudStorage/OneDrive-CoxAutomotive/Documents/GT/CSE6242/project/my_app')
 current_dir = pathlib.Path(__file__).parent.resolve()
 lap_tire_df_no_outliers_path = os.path.join(current_dir, 'lap_tire_df_no_outliers.parquet')
 driver_bio_2_path = os.path.join(current_dir, 'driver_bio_2.parquet')
@@ -140,25 +137,21 @@ def pull_f1_data(ses_num, drv_num):
 
     #  convert to a different date format
     brk_df['date'] = pd.to_datetime(brk_df['date'], format='ISO8601')
-    # brk_df['date'] = brk_df['date'].dt.floor('S') # Floor to seconds (removes microseconds)
     brk_df['date'] = brk_df['date'].dt.round('100ms') # Round to nearest tenth of a second (100 milliseconds)
     brk_df.drop_duplicates(subset=['date'], inplace=True, ignore_index=True, keep='last') # dedup by seconds
 
     # clean location df
     loc_df['date'] = pd.to_datetime(loc_df['date'], format='ISO8601')
-    # loc_df['date'] = loc_df['date'].dt.floor('S') # Floor to seconds (removes microseconds)
     loc_df['date'] = loc_df['date'].dt.round('100ms') # Round to nearest tenth of a second (100 milliseconds)
     loc_df.drop_duplicates(subset=['date'], inplace=True, ignore_index=True, keep='last') # dedup by seconds
 
     # clean lap df
     lap_df['date_start'] = pd.to_datetime(lap_df['date_start'], format='ISO8601')
-    # lap_df['date_start'] = lap_df['date_start'].dt.floor('S') # Floor to seconds (removes microseconds)
     lap_df['date_start'] = lap_df['date_start'].dt.round('100ms') # Round to nearest tenth of a second (100 milliseconds)
     lap_df.drop_duplicates(subset=['date_start'], inplace=True, ignore_index=True, keep='last') # dedup by seconds
     
     # clean position df
     pos_df['date'] = pd.to_datetime(pos_df['date'], format='ISO8601')
-    # lap_df['date_start'] = lap_df['date_start'].dt.floor('S') # Floor to seconds (removes microseconds)
     pos_df['date'] = pos_df['date'].dt.round('100ms') # Round to nearest tenth of a second (100 milliseconds)
     pos_df.drop_duplicates(subset=['date'], inplace=True, ignore_index=True, keep='last') # dedup by seconds    
 
@@ -200,9 +193,8 @@ def load_and_crop_image(image_url, target_ratio=3/4):
     
     return img
 
-# Load data
+# Load data for the tire and lap speed 
 @st.cache_data(ttl=28800)
-# def load_data(file_path="/Users/iangraetzer/Desktop/Georgia_Tech/data_vis_CSE_6040/group_project/lap_tire_df_no_outliers.csv"):
 
 
 def load_data(file_path=lap_tire_df_no_outliers_path):
@@ -238,40 +230,6 @@ def load_data(file_path=lap_tire_df_no_outliers_path):
 
 
 
-
-# st.write(os.listdir())
-
-# # Set page title
-# st.markdown("""
-# <style>
-#     .reportview-container .main .block-container {
-#         max-width: 800px;
-#         padding-top: 2rem;
-#         padding-right: 2rem;
-#         padding-left: 2rem;
-#         padding-bottom: 2rem;
-#     }
-#     .plotly-graph-div.js-plotly-plot {
-#         transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
-#     }
-#     .js-plotly-plot .plot-container .svg-container {
-#         transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
-#     }
-
-# </style>
-# """, unsafe_allow_html=True)
-
-# hide_img_fs = '''
-# <style>
-# button[title="View fullscreen"]{
-#     visibility: hidden;}
-# </style>
-# '''
-
-# st.markdown(hide_img_fs, unsafe_allow_html=True)
-
-
-
 # Load the data
 df_tire = load_data()
 
@@ -285,12 +243,13 @@ st.markdown("# Team 174:<br>A Deeper Look into the 2024 F1 Season", unsafe_allow
 st.divider()
 
 
-# with dropdown_col:
+# drivers for drop dropdown_col:
 driver_display_list = ['Max Verstappen', 'Logan Sargeant','Lando Norris', 'Pierre Gasly', 
 'Sergio Perez', 'Fernando Alonso', 'Charles Leclerc', 'Lance Stroll', 'Kevin Magnussen', 'Yuki Tsunoda', 
 'Alexander Albon','Zhou Guanyu', 'Nico Hulkenberg', 'Esteban Ocon','Lewis Hamilton','Carlos Sainz', 'George Russell', 
 'Valtteri Bottas','Oscar Piastri']
 
+#pulling images into the app 
 driver_images = {
     'Max Verstappen': "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/2024-08-25_Motorsport%2C_Formel_1%2C_Gro%C3%9Fer_Preis_der_Niederlande_2024_STP_3973_by_Stepro_%28medium_crop%29.jpg/500px-2024-08-25_Motorsport%2C_Formel_1%2C_Gro%C3%9Fer_Preis_der_Niederlande_2024_STP_3973_by_Stepro_%28medium_crop%29.jpg",
     'Lando Norris': "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/2024-08-25_Motorsport%2C_Formel_1%2C_Gro%C3%9Fer_Preis_der_Niederlande_2024_STP_3975_by_Stepro_%28cropped2%29.jpg/800px-2024-08-25_Motorsport%2C_Formel_1%2C_Gro%C3%9Fer_Preis_der_Niederlande_2024_STP_3975_by_Stepro_%28cropped2%29.jpg",
@@ -313,7 +272,6 @@ driver_images = {
     'Oscar Piastri': "https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-2172131554-copy.jpg?c=16x9&q=h_833,w_1480,c_fill"
 }
 
-# driver_bio = pd.read_csv('/Users/iangraetzer/Desktop/Georgia_Tech/data_vis_CSE_6040/group_project/driver_bio_2.csv')
 driver_bio = pd.read_parquet(driver_bio_2_path)
 
 
@@ -684,10 +642,12 @@ if on:
     with col2:
         show_cols = ['date','x','y','rpm','speed','n_gear','throttle','brake','lap_number','position','curve']
         st.dataframe(anim_df[show_cols], use_container_width=True, hide_index=True, height=800)
-###
-#Driving Style section 
-###
 st.divider()
+
+################################################################################
+########## Clustering section ########## 
+################################################################################
+
 st.header("What Defines a Driver")
 
 
