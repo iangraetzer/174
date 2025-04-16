@@ -556,7 +556,7 @@ if on:
     fig.update_layout(width=800, height=800, # margin=dict(r=100), # Add bottom margin for colorbar
             xaxis=dict(range=[anim_df['x'].min()-500, anim_df['x'].max()+500], autorange=False, zeroline=False),
             yaxis=dict(range=[anim_df['y'].min()-500, anim_df['y'].max()+500], autorange=False, zeroline=False),
-            title_text=f"Interactive Track for {selected_driver_display} at {selected_meeting}", title_x=0.5,
+            title_text=f"Interactive Track for {selected_driver_display} at {selected_meeting}", title_x=0,
             updatemenus =[
                 {
                 'type':'buttons',
