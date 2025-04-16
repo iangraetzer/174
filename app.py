@@ -728,18 +728,30 @@ grand_prix_data = {
 
 default_image = os.path.join(current_dir, 'images/7466140.png')
 
+if 'selected_meeting' not in st.session_state:
+    st.session_state.selected_meeting = list(grand_prix_data.keys())[0]  # Default to first meeting
 
+# Function to update session state when dropdown changes
+def update_selected_meeting():
+    st.session_state.selected_meeting = st.session_state.meeting_selector
 
-selected_meeting = st.selectbox(
+# Top dropdown - this will update the session state
+st.selectbox(
     "Select a Meeting",
-    options=list(grand_prix_data.keys())
+    options=list(grand_prix_data.keys()),
+    key="meeting_selector",
+    on_change=update_selected_meeting,
+    index=list(grand_prix_data.keys()).index(st.session_state.selected_meeting)
 )
 
 
-
-
+st.header("What Defines a Driver")
 
 col1, col2 = st.columns(2)
+
+with col1:
+    st.header(f"{st.session_state.selected_meeting}")
+    st.text(f"This chart shows the {st.session_state.selected_meeting} race correlation between different driving factors that define a driver's unique style on track. The visualization demonstrates how braking patterns, throttle application, and cornering technique combine to create distinctive racing signatures.")
 
 with col2:
     st.header("Chart")
@@ -768,7 +780,13 @@ with col2:
     if selected_meeting in grand_prix_data:
         # Get data for the selected meeting
         meeting_data = grand_prix_data[selected_meeting]
-        st.image(meeting_data["image_path"])
+        
+        # If an image URL is provided and you want to use it instead of local file
+        if meeting_data["image_url"]:
+            st.image(meeting_data["image_url"])
+        else:
+            # Use the local image file
+            st.image(meeting_data["image_path"])
     else:
         # Use default image if the selected meeting is not in the dictionary
         st.image(default_image)
