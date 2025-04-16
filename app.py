@@ -767,26 +767,3 @@ with col2:
 
 st.header("What Defines a Driver")
 
-col1, col2 = st.columns(2)
-
-with col1:
-    st.header(f"{selected_meeting}")
-    st.text(f"This chart shows the {selected_meeting} race correlation between different driving factors that define a driver's unique style on track. The visualization demonstrates how braking patterns, throttle application, and cornering technique combine to create distinctive racing signatures.")
-
-with col2:
-    st.header("Chart")
-    
-    # Get the image path based on the selected meeting, or use default if not found
-    if selected_meeting in grand_prix_data:
-        # Get data for the selected meeting
-        meeting_data = grand_prix_data[selected_meeting]
-        
-        # If an image URL is provided and you want to use it instead of local file
-        if meeting_data["image_url"]:
-            st.image(meeting_data["image_url"])
-        else:
-            # Use the local image file
-            st.image(meeting_data["image_path"])
-    else:
-        # Use default image if the selected meeting is not in the dictionary
-        st.image(default_image)
