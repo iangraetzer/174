@@ -650,11 +650,113 @@ st.divider()
 test_image = os.path.join(current_dir, 'test_image/852de307-c6a8-466b-b014-a914653e0179.png')
 st.header("What Defines a Driver")
 
+####### Image Dictionary for the different charts #############
+grand_prix_data = {
+    "Abu Dhabi Grand Prix": {
+        "image_path": os.path.join(current_dir, 'images/abu_dhabi_gp.png'),
+    },
+    "Australian Grand Prix": {
+        "image_path": os.path.join(current_dir, 'images/australian_gp.png'),
+    },
+    "Austrian Grand Prix": {
+        "image_path": os.path.join(current_dir, 'images/austrian_gp.png'),
+    },
+    "Azerbaijan Grand Prix": {
+        "image_path": os.path.join(current_dir, 'images/azerbaijan_gp.png'),
+    },
+    "Bahrain Grand Prix": {
+        "image_path": os.path.join(current_dir, 'images/bahrain_gp.png'),
+    },
+    "Belgian Grand Prix": {
+        "image_path": os.path.join(current_dir, 'images/belgian_gp.png'),
+    },
+    "British Grand Prix": {
+        "image_path": os.path.join(current_dir, 'images/british_gp.png'),
+    },
+    "Canadian Grand Prix": {
+        "image_path": os.path.join(current_dir, 'images/canadian_gp.png'),
+    },
+    "Chinese Grand Prix": {
+        "image_path": os.path.join(current_dir, 'images/chinese_gp.png'),
+    },
+    "Dutch Grand Prix": {
+        "image_path": os.path.join(current_dir, 'images/dutch_gp.png'),
+    },
+    "Emilia Romagna Grand Prix": {
+        "image_path": os.path.join(current_dir, 'images/emilia_romagna_gp.png'),
+    },
+    "Hungarian Grand Prix": {
+        "image_path": os.path.join(current_dir, 'images/hungarian_gp.png'),
+    },
+    "Italian Grand Prix": {
+        "image_path": os.path.join(current_dir, 'images/italian_gp.png'),
+    },
+    "Japanese Grand Prix": {
+        "image_path": os.path.join(current_dir, 'images/japanese_gp.png'),
+    },
+    "Las Vegas Grand Prix": {
+        "image_path": os.path.join(current_dir, 'images/las_vegas_gp.png'),
+    },
+    "Mexican Grand Prix": {
+        "image_path": os.path.join(current_dir, 'images/mexico_city_gp.png'),
+    },
+    "Miami Grand Prix": {
+        "image_path": os.path.join(current_dir, 'images/miami_gp.png'),
+    },
+    "Monaco Grand Prix": {
+        "image_path": os.path.join(current_dir, 'images/monaco_gp.png'),
+    },
+    "Qatar Grand Prix": {
+        "image_path": os.path.join(current_dir, 'images/qatar_gp.png'),
+    },
+    "São Paulo Grand Prix": {
+        "image_path": os.path.join(current_dir, 'images/sao_paulo_gp.png'),
+    },
+    "Saudi Arabian Grand Prix": {
+        "image_path": os.path.join(current_dir, 'images/saudi_arabian_gp.png'),
+    },
+    "Singapore Grand Prix": {
+        "image_path": os.path.join(current_dir, 'images/singapore_gp.png'),
+    },
+    "Spanish Grand Prix": {
+        "image_path": os.path.join(current_dir, 'images/spanish_gp.png'),
+    },
+    "United States Grand Prix": {
+        "image_path": os.path.join(current_dir, 'images/united_states_gp.png'),
+    }
+}
+
+
+
+image_paths = {
+    "Monaco Grand Prix": os.path.join(current_dir, 'images/monaco_gp.png'),
+    "Silverstone": os.path.join(current_dir, 'images/silverstone.png'),
+    "Monza": os.path.join(current_dir, 'images/monza.png'),
+    "Spa": os.path.join(current_dir, 'images/spa.png'),
+    # Add more meetings and their corresponding image paths as needed
+}
+
+# Default image if the selected meeting doesn't have a corresponding image
+default_image = os.path.join(current_dir, 'test_image/852de307-c6a8-466b-b014-a914653e0179.png')
+
+# Your app's existing code for selecting a meeting
+# This is just a placeholder - replace with your actual selection mechanism
+selected_meeting = st.selectbox(
+    "Select a Meeting",
+    options=list(image_paths.keys()) + ["Other Meeting"]
+)
+
+
+
+
+
+
+
 
 col1, col2 = st.columns(2)
 
 with col1:
-    st.header(f"{selected_meeting}?")
+    st.header(f"{selected_meeting}")
     st.text(f"This chart shows the {selected_meeting} race correlation  between different driving factors that define a driver's unique style on track. The visualization demonstrates how braking patterns, throttle application, and cornering technique combine to create distinctive racing signatures.")
 
 with col2:
