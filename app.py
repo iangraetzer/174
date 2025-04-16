@@ -647,8 +647,7 @@ st.divider()
 ################################################################################
 ########## Clustering section ########## 
 ################################################################################
-test_image = os.path.join(current_dir, 'test_image/852de307-c6a8-466b-b014-a914653e0179.png')
-st.header("What Defines a Driver")
+
 
 ####### Image Dictionary for the different charts #############
 grand_prix_data = {
