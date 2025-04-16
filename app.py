@@ -647,7 +647,7 @@ st.divider()
 ################################################################################
 ########## Clustering section ########## 
 ################################################################################
-
+st.header("What Defines a Driver")
 
 ####### Image Dictionary for the different charts #############
 grand_prix_data = {
@@ -744,7 +744,6 @@ st.selectbox(
 )
 
 
-st.header("What Defines a Driver")
 
 col1, col2 = st.columns(2)
 
