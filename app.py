@@ -726,28 +726,14 @@ grand_prix_data = {
     }
 }
 
+default_image = os.path.join(current_dir, 'images/4143644-200.png')
 
 
-image_paths = {
-    "Monaco Grand Prix": os.path.join(current_dir, 'images/monaco_gp.png'),
-    "Silverstone": os.path.join(current_dir, 'images/silverstone.png'),
-    "Monza": os.path.join(current_dir, 'images/monza.png'),
-    "Spa": os.path.join(current_dir, 'images/spa.png'),
-    # Add more meetings and their corresponding image paths as needed
-}
 
-# Default image if the selected meeting doesn't have a corresponding image
-default_image = os.path.join(current_dir, 'test_image/852de307-c6a8-466b-b014-a914653e0179.png')
-
-# Your app's existing code for selecting a meeting
-# This is just a placeholder - replace with your actual selection mechanism
 selected_meeting = st.selectbox(
     "Select a Meeting",
-    options=list(image_paths.keys()) + ["Other Meeting"]
+    options=list(grand_prix_data.keys())
 )
-
-
-
 
 
 
@@ -761,4 +747,11 @@ with col1:
 
 with col2:
     st.header("chart")
-    st.image(test_image)
+    if selected_meeting in grand_prix_data:
+        # Get data for the selected meeting
+        meeting_data = grand_prix_data[selected_meeting]
+        if meeting_data["image_path"]:
+            st.image(meeting_data["image_path"])
+    else:
+        # Use default image if the selected meeting is not in the dictionary
+        st.image(default_image)
