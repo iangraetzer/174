@@ -404,10 +404,18 @@ col1, col2 = st.columns([2, 1])
 track_icon = os.path.join(current_dir, 'images/track_icon.png')
 
 with col1:
-    on = st.toggle(f"Generate Interactive Track for {selected_driver_display} at {selected_meeting}? :checkered_flag: :racing_car:" )
+    # Using segmented_control instead of toggle
+    switch_status = st.segmented_control(
+        label=f"Generate Interactive Track for {selected_driver_display} at {selected_meeting}? :checkered_flag: :racing_car:",
+        options=["On", "Off"],
+        default="Off"
+    )
+    
+    # Check if the switch is on
+    on = (switch_status == "On")
+    
     if not on:
-            
-            st.image(track_icon, width=200)
+        st.image(track_icon, width=200)
 if on:
     # need to have a button to load for speed's sake
     drv_num, ses_num = f_df.loc[(f_df['meeting_name']==selected_meeting) & 
