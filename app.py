@@ -401,7 +401,7 @@ with col3:
 ########## interactive section ########## using selected_driver_display & selected_meeting
 ################################################################################
 
-on = st.toggle(f"Generate Interactive Track for {selected_driver_display} at {selected_meeting}? :checkered_flag: racing_car:" , value=True)
+on = st.toggle(f"Generate Interactive Track for {selected_driver_display} at {selected_meeting}? :checkered_flag: :racing_car:" , value=True)
 
 if on:
     # need to have a button to load for speed's sake
