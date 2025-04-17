@@ -367,7 +367,7 @@ with col3:
             
             summary_data.append({
                 "Race": race,
-                "Final Position": race_row['final_position'],
+                "Final\nPosition": race_row['final_position'],  # Using \n for line break
                 "Fastest Lap": race_row['fastest_lap'],
                 "Pit Stops": race_row['pit_stops']
             })
