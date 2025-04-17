@@ -249,10 +249,11 @@ driver_display_list = ['Max Verstappen', 'Logan Sargeant','Lando Norris', 'Pierr
 'Alexander Albon','Zhou Guanyu', 'Nico Hulkenberg', 'Esteban Ocon','Lewis Hamilton','Carlos Sainz', 'George Russell', 
 'Valtteri Bottas','Oscar Piastri']
 
-#pulling images into the app 
+#pulling images into the app ...
+test = (1,2,4,4)
 driver_images = {
     'Max Verstappen': "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/2024-08-25_Motorsport%2C_Formel_1%2C_Gro%C3%9Fer_Preis_der_Niederlande_2024_STP_3973_by_Stepro_%28medium_crop%29.jpg/500px-2024-08-25_Motorsport%2C_Formel_1%2C_Gro%C3%9Fer_Preis_der_Niederlande_2024_STP_3973_by_Stepro_%28medium_crop%29.jpg",
-    'Lando Norris': "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/2024-08-25_Motorsport%2C_Formel_1%2C_Gro%C3%9Fer_Preis_der_Niederlande_2024_STP_3975_by_Stepro_%28cropped2%29.jpg/800px-2024-08-25_Motorsport%2C_Formel_1%2C_Gro%C3%9Fer_Preis_der_Niederlande_2024_STP_3975_by_Stepro_%28cropped2%29.jpg",
+    'Lando Norris': "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1000w,f_auto,q_auto:best/rockcms/2025-03/250306-lando-norris-ew-800p-37be18.jpg",
     'Logan Sargeant': "https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcTqXtktUmodViriVMDtSgsLa_BaY0uJA-dEp8qTCfzPb8OSIACpPPvFl7p4acI-Tmn9NWkbCzjE3X1iSsg",
     'Pierre Gasly': "https://cdn1.f1oversteer.com/uploads/37/2025/03/GettyImages-2206319951-1140x760.jpg",
     'Sergio Perez': "https://superwatchman.com/wp-content/uploads/2023/03/309105394_422440280023742_3034340603059569439_n.jpg",
