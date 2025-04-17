@@ -401,11 +401,13 @@ with col3:
 ########## interactive section ########## using selected_driver_display & selected_meeting
 ################################################################################
 col1, col2 = st.columns([2, 1])
+track_icon = os.path.join(current_dir, 'images/track_icon.png')
+
 with col1:
     on = st.toggle(f"Generate Interactive Track for {selected_driver_display} at {selected_meeting}? :checkered_flag: :racing_car:" )
     if not on:
             
-            st.image("images/track_icon.png", width=200)
+            st.image(track_icon, width=200)
 if on:
     # need to have a button to load for speed's sake
     drv_num, ses_num = f_df.loc[(f_df['meeting_name']==selected_meeting) & 
