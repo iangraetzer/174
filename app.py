@@ -385,10 +385,33 @@ with col2:
 # Create tabs in the right column
 with col3:
     # tab1, tab2, tab3 = st.tabs(["Season Stats","Tire Use Speed", "Basic Info"])
-    tab1, tab2  = st.tabs(["Season Stats", "Basic Info"])    
+    tab1, tab2  = st.tabs(["Weather and Tire Performance", "Season Stats"])    
     
-  
-    with tab1:
+with tab1:
+    st.write("With each driver's best lap time on different tire compounds from every race in the 2024 racing season, in combination with weather data from the day of the event, we generate a guide on which tire compound would work best under different weather conditions.")
+    # First, convert markdown notation to actual HTML for bold text
+    weather_factor = ["<b>Track Temperature</b>", "<b>Air Temperature</b>", "<b>Humidity</b>", "<b>Rainfall</b>"]
+    
+    # Replace emoji shortcodes with actual Unicode emojis
+    soft_values = ["96°F - 102°F", "72°F - 75°F", "63% - 65%", "✅"]  # Using Unicode checkbox
+    medium_values = ["95°F - 108°F", "71°F - 79°F", "43% - 57%", "❌"]  # Using Unicode X
+    hard_values = ["97°F - 109°F", "71°F - 78°F", '46% - 61%', "❌"]  # Using Unicode X
+    
+    # Create DataFrame with HTML formatting
+    tire_weather = pd.DataFrame({
+        "<b>Weather Factor</b>": weather_factor,
+        "<b>Soft</b>": soft_values,
+        "<b>Medium</b>": medium_values,
+        "<b>Hard</b>": hard_values,
+    })
+
+    # Convert DataFrame to HTML with index=False to hide the index column
+    html = tire_weather.to_html(index=False, escape=False)
+
+    # Convert DataFrame to HTML with index=False to hide the index column
+    st.markdown(html, unsafe_allow_html=True)
+
+    with tab2:
         st.subheader(f"{selected_driver_display}'s 2024 Race Results")
         
         # Filter the DataFrame to show only the selected driver's results
@@ -422,19 +445,8 @@ with col3:
         )
     
     
-    # Content for Tab 2: Career Highlights
-    with tab2:
-        st.subheader(f"{selected_driver_display}'s Career Highlights")
-        if selected_driver_display == 'Max Verstappen':
-            st.write("- Youngest F1 driver ever at age 17")
-            st.write("- Youngest F1 race winner")
-            st.write("- 3-time World Champion (2021, 2022, 2023)")
-            st.write("- Most wins in a single season (19 in 2023)")
-        elif selected_driver_display == 'Lando Norris':
-            st.write("- First F1 win at Miami Grand Prix 2024")
-            st.write("- 2018 FIA Formula 2 runner-up")
-            st.write("- 2017 FIA Formula 3 European Champion")
-            st.write("- Multiple podiums with McLaren")
+
+        
 
 ################################################################################
 ########## interactive section ########## using selected_driver_display & selected_meeting
