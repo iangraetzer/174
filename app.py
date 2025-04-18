@@ -278,7 +278,7 @@ f_df = f_df.loc[f_df['session_type']=='Race',:].copy() # only races have the nec
 f_df.reset_index(drop=True, inplace=True)
 
 
-st.markdown("GT CSE6242 Team 174:<br>A Deeper Look into the 2024 F1 Season", unsafe_allow_html=True)
+st.markdown("# GT CSE6242 Team 174:<br>A Deeper Look into the 2024 F1 Season", unsafe_allow_html=True)
 st.divider()
 
 
