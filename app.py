@@ -407,7 +407,7 @@ with col1:
     # Using segmented_control instead of toggle
     switch_status = st.segmented_control(
         label=f"Generate Interactive Track for {selected_driver_display} at {selected_meeting}? :checkered_flag: :racing_car:",
-        options=["On", "Off"],
+        options=["On", "Offff"],
         default="Off"
     )
     
