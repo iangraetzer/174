@@ -815,7 +815,7 @@ with col1:
     st.text(f"This chart shows the {st.session_state.selected_meeting} race correlation between different driving factors that define a driver's unique style on track. The visualization demonstrates how braking patterns, throttle application, and cornering technique combine to create distinctive racing signatures.")
 
 with col2:
-    st.header("Chart")
+    st.caption("this chart 1")
     
     # Get the image path based on the selected meeting, or use default if not found
     if st.session_state.selected_meeting in grand_prix_data:
@@ -825,3 +825,21 @@ with col2:
     else:
         # Use default image if the selected meeting is not in the dictionary
         st.image(default_image)
+
+img_col1, img_col2 = st.columns(2)
+
+with img_col1:
+    st.caption("this chart 2")
+    if st.session_state.selected_meeting in grand_prix_data:
+    
+        st.image(meeting_data["image_path"])
+    else:
+        st.image("default_track_map.png")
+
+with img_col2:
+    st.caption("this chart 3")
+    if st.session_state.selected_meeting in grand_prix_data:
+    
+        st.image(meeting_data["image_path"])
+    else:
+        st.image("default_speed_dist.png")
