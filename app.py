@@ -78,7 +78,7 @@ def get_info_data():
 # -------------------- code to bring in the data from the API and create a df for the plots -------------------- 
 # -------------------- should convert to cacheable function in prod --------------------
 @st.cache_data(ttl=28800)
-def pull_f1_data(ses_num, drv_num):
+def pull_f1_data(ses_num, drv_num, full_return=False):
     """
     function to pull f1 data
     
@@ -137,33 +137,69 @@ def pull_f1_data(ses_num, drv_num):
 
     #  convert to a different date format
     brk_df['date'] = pd.to_datetime(brk_df['date'], format='ISO8601')
-    brk_df['date'] = brk_df['date'].dt.round('100ms') # Round to nearest tenth of a second (100 milliseconds)
+    # brk_df['date'] = brk_df['date'].dt.floor('S') # Floor to seconds (removes microseconds)
+    brk_df['date'] = brk_df['date'].dt.round('0.1s') # Round to nearest tenth of a second (100 milliseconds)
     brk_df.drop_duplicates(subset=['date'], inplace=True, ignore_index=True, keep='last') # dedup by seconds
 
     # clean location df
     loc_df['date'] = pd.to_datetime(loc_df['date'], format='ISO8601')
-    loc_df['date'] = loc_df['date'].dt.round('100ms') # Round to nearest tenth of a second (100 milliseconds)
+    # loc_df['date'] = loc_df['date'].dt.floor('S') # Floor to seconds (removes microseconds)
+    loc_df['date'] = loc_df['date'].dt.round('0.1s') # Round to nearest tenth of a second (100 milliseconds)
     loc_df.drop_duplicates(subset=['date'], inplace=True, ignore_index=True, keep='last') # dedup by seconds
 
     # clean lap df
     lap_df['date_start'] = pd.to_datetime(lap_df['date_start'], format='ISO8601')
-    lap_df['date_start'] = lap_df['date_start'].dt.round('100ms') # Round to nearest tenth of a second (100 milliseconds)
+    # lap_df['date_start'] = lap_df['date_start'].dt.floor('S') # Floor to seconds (removes microseconds)
+    lap_df['date_start'] = lap_df['date_start'].dt.round('0.1s') # Round to nearest tenth of a second (100 milliseconds)
     lap_df.drop_duplicates(subset=['date_start'], inplace=True, ignore_index=True, keep='last') # dedup by seconds
     
     # clean position df
     pos_df['date'] = pd.to_datetime(pos_df['date'], format='ISO8601')
-    pos_df['date'] = pos_df['date'].dt.round('100ms') # Round to nearest tenth of a second (100 milliseconds)
-    pos_df.drop_duplicates(subset=['date'], inplace=True, ignore_index=True, keep='last') # dedup by seconds    
+    # lap_df['date_start'] = lap_df['date_start'].dt.floor('S') # Floor to seconds (removes microseconds)
+    pos_df['date'] = pos_df['date'].dt.round('0.1s') # Round to nearest tenth of a second (100 milliseconds)
+    pos_df.drop_duplicates(subset=['date'], inplace=True, ignore_index=True, keep='last') # dedup by seconds
 
     # merge the df to create my df
-    my_df = brk_df.merge(loc_df[['x','y','z','date']], how='inner', on='date'
-                        ).merge(lap_df[['date_start','lap_number']], how='left', left_on='date', right_on='date_start')
+    my_df = brk_df.merge(loc_df[['x','y','z','date']], how='inner', on='date')
+
+    # bring in lap data
+    # there is an issue sometimes in that the start time for the first lap is not always labeled, this addresses that
+    lap_help_df = my_df[['date','speed']].rolling(window='10s', on='date').mean()
+    lap_1_start = lap_help_df.loc[lap_help_df['speed']>50,'date'].min() + dt.timedelta(seconds=-10)
+    lap_df['date_start'] = lap_df['date_start'].fillna(value=lap_1_start)
     
-    my_df.sort_values(by=['date'], inplace=True, ignore_index=True) # need to sort to do a near merge
+    # now that the issue has been dealt with, merge in the lap data
+    my_df.sort_values(by=['date'], inplace=True, ignore_index=True) # sort to do a near merge
+    lap_df.sort_values(by=['date_start'], inplace=True, ignore_index=True) # sort to do a near merge
+    my_df = pd.merge_asof(my_df, lap_df[['date_start','lap_number']].dropna(), left_on='date', right_on='date_start', direction='backward')
+    
+    # bring in position data
+    my_df.sort_values(by=['date'], inplace=True, ignore_index=True) # sort to do a near merge
+    pos_df.sort_values(by=['date'], inplace=True, ignore_index=True) # sort to do a near merge
     my_df = pd.merge_asof(my_df, pos_df[['date','position']], left_on='date', right_on='date', direction='nearest') # near merge
+
+    # could have done a near merge here as well but would have lost the lap num 
+    my_df.sort_values(by=['date'], inplace=True, ignore_index=True) # sorting prior to doing a ffill
+    my_df['lap_number'] = my_df['lap_number'].ffill() # my_df['lap_number'].ffill(inplace=True) #= 0
+    my_df['lap_number'] = my_df['lap_number'].fillna(value=0)
+
+    # ---------- finding the start of the first lap is actually of a doozy of a problem ----------
+    # make our df smaller by making the time periods more agggregate
+    my_df['date'] = my_df['date'].dt.round('0.5s')
+    my_df.drop_duplicates(subset=['date'], inplace=True, ignore_index=True, keep='first')
     
-    my_df['lap_number'] = my_df['lap_number'].ffill() # could have done a near merge as well but would have lost the lap num = 0
-    my_df['lap_number'].fillna(value=0, inplace=True)
+    # subset the df such that we get the early periods of inactivity
+    t_df = my_df.loc[(my_df['speed']==0) & (my_df['lap_number']<2),:].copy()
+    
+    # Calculate time difference between consecutive rows
+    t_df['next_date'] = t_df['date'].shift()
+    t_df['delta'] = np.abs(t_df['next_date'] - t_df['date'])
+    t_df['l1_start'] = t_df['next_date'] + dt.timedelta(seconds=-5) # makes it simple when we found the correct start date
+    
+    # get the cases where the gap is greater than one second (and pick the most recent one)
+    D = t_df.loc[(t_df['delta'].dt.seconds > 1) & (t_df['lap_number']==1), 'l1_start'].to_list()[-1]
+    my_df.loc[my_df['date']<=D,'lap_number']=0 # correct with the proper lap number
+    # ---------- end of lap 1 search ----------
 
     # convert it to binary and discuss with group whether 104 means anything
     my_df['brake'] = np.floor(my_df['brake']/100)
@@ -171,7 +207,10 @@ def pull_f1_data(ses_num, drv_num):
     # column to chart the track
     my_df['ones'] = 1
     
-    return my_df.copy()
+    if full_return == False:
+        return my_df.copy()
+    elif full_return == True:
+        return brk_df, loc_df, lap_df, pos_df, my_df
 
 # Display the image in the left column
 @st.cache_data(ttl=28800)
@@ -462,20 +501,18 @@ if on:
     # df['ewm'] = np.where(df['ewm']>=0.5, 1 , 0) # this does better (in terms of continuous curvature), so we will use this method
     df['curve'] = np.where(df['ewm']>=0.5, 1 , 0)
     # df['ewm0'] = np.where(df['ewm0']>=0.5, 1 , 0)        
+    df.drop(columns=['ewm','ewm1','ewm2','date_start'], inplace=True)
     
     # round it to make it more performant
     anim_df = df.copy()
     # start at the start of the first lap
     # anim_df = anim_df.loc[anim_df['lap_number']>0,:].copy() 
-    start_time = anim_df.loc[anim_df['lap_number']>0,'date'].min() + dt.timedelta(seconds=-15)
+    start_time = anim_df.loc[anim_df['lap_number']>0,'date'].min() + dt.timedelta(seconds=-5)
     anim_df = anim_df[anim_df['date'] >= start_time].copy()
 
     # round to have a smoother animation
     anim_df['date'] = anim_df['date'].dt.round('1s')
     anim_df.drop_duplicates(subset=['date'], inplace=True, ignore_index=True, keep='first')
-
-    # create a plot df to highlight the curves
-    plot_df= df.loc[df['curve']==1,:].copy()
 
     # plot
     # Get unique timestamps and create a mapping
@@ -776,6 +813,3 @@ with col2:
     else:
         # Use default image if the selected meeting is not in the dictionary
         st.image(default_image)
-
-
-
