@@ -716,8 +716,8 @@ st.header("What Defines a Driver")
 grand_prix_data = {
     "Abu Dhabi Grand Prix": {
         "image_path": os.path.join(current_dir, 'images', 'Corner', '9488_Melbourne_Corners_kmeans.png'),
-        "image_path_corner": os.path.join(current_dir, 'images', 'Corner', '9488_Melbourne_Corners_kmeans.png'),
-        "image_path_straight": os.path.join(current_dir, 'images', 'Straight', '9488_Melbourne_Straights_kmeans.png')
+        "image_path_corner": os.path.join(current_dir, 'images', 'Corner', '9662_Yas Marina Circuit_Corners_kmeans.png'),
+        "image_path_straight": os.path.join(current_dir, 'images', 'Straight', '9662_Yas Marina Circuit_Straights_kmeans.png')
     },
     "Australian Grand Prix": {
         "image_path": os.path.join(current_dir, 'images', 'Corner', '9488_Melbourne_Corners_kmeans.png'),
@@ -726,10 +726,14 @@ grand_prix_data = {
     },
     
     "Austrian Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/austrian_gp.png'),
+        "image_path": os.path.join(current_dir, 'images', 'Corner', '9488_Melbourne_Corners_kmeans.png'),
+        "image_path_corner": os.path.join(current_dir, 'images', 'Corner', '9550_Spielberg_Corners_kmeans.png'),
+        "image_path_straight": os.path.join(current_dir, 'images', 'Straight', '9550_Spielberg_Straights_kmeans.png')
     },
     "Azerbaijan Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/7466140.png'),
+        "image_path": os.path.join(current_dir, 'images', 'Corner', '9488_Melbourne_Corners_kmeans.png'),
+        "image_path_corner": os.path.join(current_dir, 'images', 'Corner', '9488_Melbourne_Corners_kmeans.png'),
+        "image_path_straight": os.path.join(current_dir, 'images', 'Straight', '9488_Melbourne_Straights_kmeans.png')
     },
     "Bahrain Grand Prix": {
         "image_path": os.path.join(current_dir, 'images/7466140.png'),
