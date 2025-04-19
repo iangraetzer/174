@@ -736,64 +736,104 @@ grand_prix_data = {
         "image_path_straight": os.path.join(current_dir, 'images', 'Straight', '9488_Melbourne_Straights_kmeans.png')
     },
     "Bahrain Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/7466140.png'),
+        "image_path": os.path.join(current_dir, 'images', 'Corner', '9488_Melbourne_Corners_kmeans.png'),
+        "image_path_corner": os.path.join(current_dir, 'images', 'Corner', '9472_Sakhir_Corners_kmeans.png'),
+        "image_path_straight": os.path.join(current_dir, 'images', 'Straight', '9472_Sakhir_Straights_kmeans.png')
     },
     "Belgian Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/7466140.png'),
+        "image_path": os.path.join(current_dir, 'images', 'Corner', '9488_Melbourne_Corners_kmeans.png'),
+        "image_path_corner": os.path.join(current_dir, 'images', 'Corner', '9574_Spa-Francorchamps_Corners_kmeans.png'),
+        "image_path_straight": os.path.join(current_dir, 'images', 'Straight', '9574_Spa-Francorchamps_Straights_kmeans.png')
     },
     "British Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/7466140.png'),
+        "image_path": os.path.join(current_dir, 'images', 'Corner', '9488_Melbourne_Corners_kmeans.png'),
+        "image_path_corner": os.path.join(current_dir, 'images', 'Corner', '9558_Silverstone_Corners_kmeans.png'),
+        "image_path_straight": os.path.join(current_dir, 'images', 'Straight', '9558_Silverstone_Straights_kmeans.png')
     },
     "Canadian Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/7466140.png'),
+        "image_path": os.path.join(current_dir, 'images', 'Corner', '9488_Melbourne_Corners_kmeans.png'),
+        "image_path_corner": os.path.join(current_dir, 'images', 'Corner', '9531_Montreal_Corners_kmeans.png'),
+        "image_path_straight": os.path.join(current_dir, 'images', 'Straight', '9531_Montreal_Straights_kmeans.png')
     },
     "Chinese Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/7466140.png'),
+        "image_path": os.path.join(current_dir, 'images', 'Corner', '9488_Melbourne_Corners_kmeans.png'),
+        "image_path_corner": os.path.join(current_dir, 'images', 'Corner', '9673_Shanghai_Corners_kmeans.png'),
+        "image_path_straight": os.path.join(current_dir, 'images', 'Straight', '9673_Shanghai_Straights_kmeans.png')
     },
     "Dutch Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/7466140.png'),
+        "image_path": os.path.join(current_dir, 'images', 'Corner', '9488_Melbourne_Corners_kmeans.png'),
+        "image_path_corner": os.path.join(current_dir, 'images', 'Corner', '9582_Zandvoort_Corners_kmeans.png'),
+        "image_path_straight": os.path.join(current_dir, 'images', 'Straight', '9582_Zandvoort_Straights_kmeans.png')
     },
     "Emilia Romagna Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/7466140.png'),
+        "image_path": os.path.join(current_dir, 'images', 'Corner', '9488_Melbourne_Corners_kmeans.png'),
+        "image_path_corner": os.path.join(current_dir, 'images', 'Corner', '99515_Imola_Corners_kmeans.png'),
+        "image_path_straight": os.path.join(current_dir, 'images', 'Straight', '9515_Imola_Straights_kmeans.png')
     },
     "Hungarian Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/7466140.png'),
+        "image_path": os.path.join(current_dir, 'images', 'Corner', '9488_Melbourne_Corners_kmeans.png'),
+        "image_path_corner": os.path.join(current_dir, 'images', 'Corner', '9566_Hungaroring_Corners_kmeans.png'),
+        "image_path_straight": os.path.join(current_dir, 'images', 'Straight', '9566_Hungaroring_Straights_kmeans.png')
     },
     "Italian Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/7466140.png'),
+        "image_path": os.path.join(current_dir, 'images', 'Corner', '9488_Melbourne_Corners_kmeans.png'),
+        "image_path_corner": os.path.join(current_dir, 'images', 'Corner', '9566_Hungaroring_Corners_kmeans.png'),
+        "image_path_straight": os.path.join(current_dir, 'images', 'Straight', '9566_Hungaroring_Straights_kmeans.png')
     },
     "Japanese Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/7466140.png'),
+        "image_path": os.path.join(current_dir, 'images', 'Corner', '9488_Melbourne_Corners_kmeans.png'),
+        "image_path_corner": os.path.join(current_dir, 'images', 'Corner', '9496_Suzuka_Corners_kmeans.png'),
+        "image_path_straight": os.path.join(current_dir, 'images', 'Straight', '9496_Suzuka_Straights_kmeans.png')        
     },
     "Las Vegas Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/7466140.png'),
+        "image_path": os.path.join(current_dir, 'images', 'Corner', '9488_Melbourne_Corners_kmeans.png'),
+        "image_path_corner": os.path.join(current_dir, 'images', 'Corner', '9644_Las Vegas_Corners_kmeans.png'),
+        "image_path_straight": os.path.join(current_dir, 'images', 'Straight', '9644_Las Vegas_Straights_kmeans.png')
     },
     "Mexican Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/7466140.png'),
+        "image_path": os.path.join(current_dir, 'images', 'Corner', '9488_Melbourne_Corners_kmeans.png'),
+        "image_path_corner": os.path.join(current_dir, 'images', 'Corner', '9625_Mexico City_Corners_kmeans.png'),
+        "image_path_straight": os.path.join(current_dir, 'images', 'Straight', '9625_Mexico City_Straights_kmeans.png')
     },
     "Miami Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/7466140.png'),
+        "image_path": os.path.join(current_dir, 'images', 'Corner', '9488_Melbourne_Corners_kmeans.png'),
+        "image_path_corner": os.path.join(current_dir, 'images', 'Corner', '9507_Miami_Corners_kmeans.png'),
+        "image_path_straight": os.path.join(current_dir, 'images', 'Straight', '9507_Miami_Straights_kmeans.png')
     },
     "Monaco Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/7466140.png'),
+        "image_path": os.path.join(current_dir, 'images', 'Corner', '9488_Melbourne_Corners_kmeans.png'),
+        "image_path_corner": os.path.join(current_dir, 'images', 'Corner', '9523_Monte Carlo_Corners_kmeans.png'),
+        "image_path_straight": os.path.join(current_dir, 'images', 'Straight', '9523_Monte Carlo_Straights_kmeans.png')
     },
     "Qatar Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/7466140.png'),
+        "image_path": os.path.join(current_dir, 'images', 'Corner', '9488_Melbourne_Corners_kmeans.png'),
+        "image_path_corner": os.path.join(current_dir, 'images', 'Corner', '9655_Lusail_Corners_kmeans.png'),
+        "image_path_straight": os.path.join(current_dir, 'images', 'Straight', '9655_Lusail_Straights_kmeans.png')
     },
     "São Paulo Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/7466140.png'),
+        "image_path": os.path.join(current_dir, 'images', 'Corner', '9488_Melbourne_Corners_kmeans.png'),
+        "image_path_corner": os.path.join(current_dir, 'images', 'Corner', '9636_Interlagos_Corners_kmeans.png'),
+        "image_path_straight": os.path.join(current_dir, 'images', 'Straight', '9636_Interlagos_Straights_kmeans.png')
     },
     "Saudi Arabian Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/7466140.png'),
+        "image_path": os.path.join(current_dir, 'images', 'Corner', '9488_Melbourne_Corners_kmeans.png'),
+        "image_path_corner": os.path.join(current_dir, 'images', 'Corner', '9480_Jeddah_Corners_kmeans.png'),
+        "image_path_straight": os.path.join(current_dir, 'images', 'Straight', '9480_Jeddah_Straights_kmeans.png.png')
     },
     "Singapore Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/7466140.png'),
+        "image_path": os.path.join(current_dir, 'images', 'Corner', '9488_Melbourne_Corners_kmeans.png'),
+        "image_path_corner": os.path.join(current_dir, 'images', 'Corner', '9606_Singapore_Corners_kmeans.png'),
+        "image_path_straight": os.path.join(current_dir, 'images', 'Straight', '9606_Singapore_Straights_kmeans.png')
     },
     "Spanish Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/7466140.png'),
+        "image_path": os.path.join(current_dir, 'images', 'Corner', '9488_Melbourne_Corners_kmeans.png'),
+        "image_path_corner": os.path.join(current_dir, 'images', 'Corner', '9606_Singapore_Corners_kmeans.png'),
+        "image_path_straight": os.path.join(current_dir, 'images', 'Straight', '9606_Singapore_Straights_kmeans.png')
     },
     "United States Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/7466140.png'),
+        "image_path": os.path.join(current_dir, 'images', 'Corner', '9488_Melbourne_Corners_kmeans.png'),
+        "image_path_corner": os.path.join(current_dir, 'images', 'Corner', '9617_Austin_Corners_kmeans.png'),
+        "image_path_straight": os.path.join(current_dir, 'images', 'Straight', '9617_Austin_Straights_kmeans.png')
     }
 }
 
