@@ -874,7 +874,7 @@ with col1:
     Interpreting the clusters within these quadrants reveals how different driving styles and strategies emerge in corners versus straights, providing deeper insight into performance variations across the lap.
     """)
 with col2:
-    st.caption("this chart 1")
+
     
     # Get the image path based on the selected meeting, or use default if not found
     if st.session_state.selected_meeting in grand_prix_data:
@@ -888,7 +888,7 @@ with col2:
 img_col1, img_col2 = st.columns(2)
 
 with img_col1:
-    st.caption("this chart 2")
+ 
     if st.session_state.selected_meeting in grand_prix_data:
     
         st.image(meeting_data["image_path_straight"])
@@ -896,7 +896,7 @@ with img_col1:
         st.image("default_track_map.png")
 
 with img_col2:
-    st.caption("this chart 3")
+
     if st.session_state.selected_meeting in grand_prix_data:
     
         st.image(meeting_data["image_path_corner"])
