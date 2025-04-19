@@ -716,7 +716,7 @@ st.header("What Defines a Driver")
 ####### Image Dictionary for the different charts #############
 grand_prix_data = {
     "Abu Dhabi Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images', 'Corner', '9488_Melbourne_Corners_kmeans.png'),
+        "image_path": os.path.join(current_dir, 'images', 'Full', '9662_Yas Marina Circuit_Full Race_kmeans.png'),
         "image_path_corner": os.path.join(current_dir, 'images', 'Corner', '9662_Yas Marina Circuit_Corners_kmeans.png'),
         "image_path_straight": os.path.join(current_dir, 'images', 'Straight', '9662_Yas Marina Circuit_Straights_kmeans.png')
     },
@@ -858,7 +858,7 @@ st.selectbox(
 
 
 
-col1, col2 = st.columns(2)
+col1, col2 = st.columns([1, 2])
 
 with col1:
     st.header(f"{st.session_state.selected_meeting}")
