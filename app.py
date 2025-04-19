@@ -197,7 +197,7 @@ def pull_f1_data(ses_num, drv_num, full_return=False):
     t_df['l1_start'] = t_df['next_date'] + dt.timedelta(seconds=-5) # makes it simple when we found the correct start date
     
     # get the cases where the gap is greater than one second (and pick the most recent one)
-    D = t_df.loc[(t_df['delta'].dt.seconds > 1) & (t_df['lap_number']==1), 'l1_start'].to_list()[-1]
+    D = t_df.loc[(t_df['delta'].dt.seconds > 0.5) & (t_df['lap_number']==1), 'l1_start'].to_list()[-1]
     my_df.loc[my_df['date']<=D,'lap_number']=0 # correct with the proper lap number
     # ---------- end of lap 1 search ----------
 
@@ -531,6 +531,7 @@ if on:
     unique_timestamps = anim_df['date'].unique()
     timestamp_to_index = {ts: idx for idx, ts in enumerate(unique_timestamps)}
     lap_list = [int(x) for x in anim_df['lap_number'].values]
+    pos_list = [int(x) for x in anim_df['position'].values]
 
     # global var for duration
     dur = 100
@@ -550,7 +551,7 @@ if on:
                     'transition': {'duration': 0}
                 }
             ],
-            'label': unique_timestamps[i].strftime('%H:%M:%S') + f' | Lap { lap_list[i] } ',  # Show time as label
+            'label': unique_timestamps[i].strftime('%H:%M:%S') + f' | Lap { lap_list[i] } | Position {pos_list[i]}',  # Label
             'method': 'animate'
         } for i in range(len(unique_timestamps))
     ]
@@ -563,8 +564,8 @@ if on:
                 y=df['y'],
                 mode='markers',
                 # line=dict(color='lightgray', width=2),
-                marker=dict(color=df['curve'], colorscale=[[0, 'grey'], [1, 'purple']]),
-                name='Track (Curve=purple)',
+                marker=dict(color=df['curve'], colorscale=[[0, 'grey'], [1, 'purple']], opacity=0.5),
+                name=f'{selected_meeting} \n(curve=purple)',
                 hoverinfo='skip'
             ),     
             go.Scatter(
@@ -629,14 +630,14 @@ if on:
                                             "fromcurrent": True, "transition": {"duration": dur*2, 
                                                                                 # "easing": "cubic-in-out"
                                                                                 }}],
-                            'label':"Play",
+                            'label':"<span style='color: green;'>Go</span>",  # HTML styling for green text
                             'method':"animate",
                         },
                         {
                             "args": [[None], {"frame": {"duration": 0, "redraw": False},
                                                 "mode": "immediate",
                                                 "transition": {"duration": 0}}],
-                            "label": "Pause",
+                            "label": "<span style='color: red;'>Stop</span>",  # HTML styling for red text
                             "method": "animate"
                         }        
                     ], # buttons
