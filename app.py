@@ -715,10 +715,14 @@ st.header("What Defines a Driver")
 ####### Image Dictionary for the different charts #############
 grand_prix_data = {
     "Abu Dhabi Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/abu_dhabi_gp.png'),
+        "image_path_1": os.path.join(current_dir, 'images/abu_dhabi_gp_1.png'),
+        "image_path_2": os.path.join(current_dir, 'images/abu_dhabi_gp_2.png'),
+        "image_path_3": os.path.join(current_dir, 'images/abu_dhabi_gp_2.png')
     },
     "Australian Grand Prix": {
-        "image_path": os.path.join(current_dir, 'images/australian_gp.png'),
+        "image_path_1": os.path.join(current_dir, 'images/abu_dhabi_gp_1.png'),
+        "image_path_corner": os.path.join(current_dir, 'images/Corner/9488_Melbourne_Corners_kmeans.png'),
+        "image_path_straight": os.path.join(current_dir, 'images/Straight/9488_Melbourne_Straights_kmeans.png')
     },
     "Austrian Grand Prix": {
         "image_path": os.path.join(current_dir, 'images/austrian_gp.png'),
@@ -821,7 +825,7 @@ with col2:
     if st.session_state.selected_meeting in grand_prix_data:
         # Get data for the selected meeting
         meeting_data = grand_prix_data[st.session_state.selected_meeting]
-        st.image(meeting_data["image_path"])
+        st.image(meeting_data["image_path_1"])
     else:
         # Use default image if the selected meeting is not in the dictionary
         st.image(default_image)
@@ -832,7 +836,7 @@ with img_col1:
     st.caption("this chart 2")
     if st.session_state.selected_meeting in grand_prix_data:
     
-        st.image(meeting_data["image_path"])
+        st.image(meeting_data["image_path_straight"])
     else:
         st.image("default_track_map.png")
 
@@ -840,6 +844,6 @@ with img_col2:
     st.caption("this chart 3")
     if st.session_state.selected_meeting in grand_prix_data:
     
-        st.image(meeting_data["image_path"])
+        st.image(meeting_data["image_path_corner"])
     else:
         st.image("default_speed_dist.png")
