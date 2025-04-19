@@ -861,8 +861,17 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.header(f"{st.session_state.selected_meeting}")
-    st.text(f"This chart shows the {st.session_state.selected_meeting} race correlation between different driving factors that define a driver's unique style on track. The visualization demonstrates how braking patterns, throttle application, and cornering technique combine to create distinctive racing signatures.")
+    st.markdown("""
+    We applied clustering techniques to segment the data and analyze performance patterns. By separating the data into corners and straights, we observed distinct clustering results for each segment, highlighting how driver behavior and vehicle dynamics differ between these track sections.
 
+    Each chart plots throttle versus brake input, dividing the data into four quadrants:  
+    * Top left: High brake, low throttle (heavy braking)  
+    * Top right: High brake, high throttle (overlapping inputs)  
+    * Bottom left: Low brake, low throttle (coasting)  
+    * Bottom right: Low brake, high throttle (full acceleration)
+
+    Interpreting the clusters within these quadrants reveals how different driving styles and strategies emerge in corners versus straights, providing deeper insight into performance variations across the lap.
+    """)
 with col2:
     st.caption("this chart 1")
     
